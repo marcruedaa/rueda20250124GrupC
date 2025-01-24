@@ -8,11 +8,6 @@ if __name__ == '__main__':
     numEmpreses=int()
     esCorrecte=bool()
     esCorrecte=True
-    nomEmpresa=str()
-    servei=str()
-    numPersones=int()
-    preuInicial=int()
-    preuDescomptat=int()
     descompte1=0
     descompte2=0
     quantitatB=0
@@ -32,6 +27,11 @@ if __name__ == '__main__':
 
 
     while(comptador<10):
+        nomEmpresa = str()
+        servei = str()
+        numPersones = int()
+        preuInicial = int()
+        preuDescomptat = int()
         print(f"Quin és el nom de la empresa número {comptador}?")
         nomEmpresa=input()
         if(nomEmpresa=='*'):
@@ -39,58 +39,71 @@ if __name__ == '__main__':
         else:
             print(f"Quin servei vol fer servir: {nomServei1}, {nomServei2}, {nomServei3}, {nomServei4}.Insereixi només la lletra del servei que vulgui fer servir")
             servei = input()
-            if (servei == 'B' or servei == 'b' or servei == 'P' or servei == 'p' or servei == 'V' or servei == 'v' or servei == 'T' or servei == 't'):
-                print("Quantes persones hi ha a la empresa?")
-                numPersones = int(input())
-                if (servei == 'B' or servei == 'b'):
-                    quantitatB +=1
-                    preuInicial = numPersones * preuDelServei1
-                    if (numPersones > 50):
-                        descompte = preuInicial - (preuInicial * 0.05)
-                        preuDescomptat = preuInicial - descompte
-                    if(preuDescomptat>5000):
-                        descompte2=(preuDescomptat - 5000)  - ((preuDescomptat - 5000) * 0.1)
-                        preuDescomptat= preuDescomptat -descompte2
 
-                if (servei == 'P' or servei == 'p'):
-                    quantitatP += 1
-                    preuInicial = numPersones * preuDelServei2
-                    if (numPersones > 50):
-                        descompte1 = preuInicial - (preuInicial * 0.05)
-                        preuDescomptat = preuInicial - descompte1
-                    if (preuDescomptat > 5000):
-                        descompte2 = (preuDescomptat - 5000) - ((preuDescomptat - 5000) * 0.1)
-                        preuDescomptat = preuDescomptat - descompte2
-                if (servei == 'V' or servei == 'v'):
-                    quantitatV += 1
-                    preuInicial = numPersones * preuDelServei3
-                    if (numPersones > 50):
-                        descompte1 = preuInicial - (preuInicial * 0.05)
-                        preuDescomptat = preuInicial - descompte1
-                    if (preuDescomptat > 5000):
-                        descompte2 = (preuDescomptat - 5000) - ((preuDescomptat - 5000) * 0.1)
-                        preuDescomptat = preuDescomptat - descompte2
-                if (servei == 'T' or servei == 't'):
-                    quantitatT += 1
-                    preuInicial = numPersones * preuDelServei4
-                    if (numPersones > 50):
-                        descompte1 = preuInicial - (preuInicial * 0.05)
-                        preuDescomptat = preuInicial - descompte1
-                    if (preuDescomptat > 5000):
-                        descompte2 = (preuDescomptat - 5000) - ((preuDescomptat - 5000) * 0.1)
-                        preuDescomptat = preuDescomptat - descompte2
-            else:
-                print("Error!!!Insereix una lletra d'un servei existent!")
-            print(f"Detalls de la factura:"
-                  f"\n\t Empresa:{nomEmpresa}"
-                  f"\n\t Tipus de servei:{servei}"
-                  f"\n\t Nombre de persones:{numPersones}"
-                  f"\n\t Cost inicial:{preuInicial}"
-                  f"\n\t Descompte 1 (5% per més de 50 persones):{descompte}"
-                  f"\n\t Descompte 2 (si el preu supera els 5000€):{descompte2}"
-                  f"\n\t Total a pagar:{preuDescomptat}")
+            print("Quantes persones hi ha a la empresa?")
+            numPersones = int(input())
+            if (servei == 'B' or servei == 'b'):
+                quantitatB +=1
+                preuInicial = numPersones * preuDelServei1
+                if (numPersones > 50):
+                    descompte1 = preuInicial - (preuInicial * 0.05)
+                    preuDescomptat = preuInicial - descompte1
+                if(preuDescomptat>5000):
+                    descompte2=(preuDescomptat - 5000)  - ((preuDescomptat - 5000) * 0.1)
+                    preuDescomptat= preuDescomptat -descompte2
+            totalB += preuDescomptat
+            if (servei == 'P' or servei == 'p'):
+                quantitatP += 1
+                preuInicial = numPersones * preuDelServei2
+                if (numPersones > 50):
+                    descompte1 = preuInicial - (preuInicial * 0.05)
+                    preuDescomptat = preuInicial - descompte1
+                else:
+                    preuDescomptat=preuInicial
+                if (preuDescomptat > 5000):
+                    descompte2 = (preuDescomptat - 5000) - ((preuDescomptat - 5000) * 0.1)
+                    preuDescomptat = preuDescomptat - descompte2
+                else:
+                    preuDescomptat=preuInicial
+            totalP += preuDescomptat
+            if (servei == 'V' or servei == 'v'):
+                quantitatV += 1
+                preuInicial = numPersones * preuDelServei3
+                if (numPersones > 50):
+                    descompte1 = preuInicial - (preuInicial * 0.05)
+                    preuDescomptat = preuInicial - descompte1
+                else:
+                    preuDescomptat=preuInicial
+                if (preuDescomptat > 5000):
+                    descompte2 = (preuDescomptat - 5000) - ((preuDescomptat - 5000) * 0.1)
+                    preuDescomptat = preuDescomptat - descompte2
+                else:
+                    preuDescomptat=preuInicial
+            totalV += preuDescomptat
+            if (servei == 'T' or servei == 't'):
+                quantitatT += 1
+                preuInicial = numPersones * preuDelServei4
+                if (numPersones > 50):
+                    descompte1 = preuInicial - (preuInicial * 0.05)
+                    preuDescomptat = preuInicial - descompte1
+                else:
+                    preuDescomptat=preuInicial
+                if (preuDescomptat > 5000):
+                    descompte2 = (preuDescomptat - 5000) - ((preuDescomptat - 5000) * 0.1)
+                    preuDescomptat = preuDescomptat - descompte2
+                else:
+                    preuDescomptat=preuInicial
+            totalT += preuDescomptat
+        print(f"Detalls de la factura:"
+              f"\n\t Empresa:{nomEmpresa}"
+              f"\n\t Tipus de servei:{servei}"
+              f"\n\t Nombre de persones:{numPersones}"
+              f"\n\t Cost inicial:{preuInicial}"
+              f"\n\t Descompte 1 (5% per més de 50 persones):{descompte1}"
+              f"\n\t Descompte 2 (si el preu supera els 5000€):{descompte2}"
+              f"\n\t Total a pagar:{preuDescomptat}")
 
-            comptador +=1
+        comptador +=1
 
     print(f"Resum de la quantitat segons el tipus"
         f"\n\t {nomServei1} = {quantitatB}"
