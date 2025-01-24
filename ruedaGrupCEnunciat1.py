@@ -15,6 +15,14 @@ if __name__ == '__main__':
     preuDescomptat=int()
     descompte1=0
     descompte2=0
+    quantitatB=0
+    quantitatP = 0
+    quantitatV = 0
+    quantitatT = 0
+    totalB = 0
+    totalP = 0
+    totalV = 0
+    totalT = 0
 
     comptador=1
     preuDelServei1 = 30
@@ -35,6 +43,7 @@ if __name__ == '__main__':
                 print("Quantes persones hi ha a la empresa?")
                 numPersones = int(input())
                 if (servei == 'B' or servei == 'b'):
+                    quantitatB +=1
                     preuInicial = numPersones * preuDelServei1
                     if (numPersones > 50):
                         descompte = preuInicial - (preuInicial * 0.05)
@@ -42,7 +51,9 @@ if __name__ == '__main__':
                     if(preuDescomptat>5000):
                         descompte2=(preuDescomptat - 5000)  - ((preuDescomptat - 5000) * 0.1)
                         preuDescomptat= preuDescomptat -descompte2
+
                 if (servei == 'P' or servei == 'p'):
+                    quantitatP += 1
                     preuInicial = numPersones * preuDelServei2
                     if (numPersones > 50):
                         descompte1 = preuInicial - (preuInicial * 0.05)
@@ -51,6 +62,7 @@ if __name__ == '__main__':
                         descompte2 = (preuDescomptat - 5000) - ((preuDescomptat - 5000) * 0.1)
                         preuDescomptat = preuDescomptat - descompte2
                 if (servei == 'V' or servei == 'v'):
+                    quantitatV += 1
                     preuInicial = numPersones * preuDelServei3
                     if (numPersones > 50):
                         descompte1 = preuInicial - (preuInicial * 0.05)
@@ -59,6 +71,7 @@ if __name__ == '__main__':
                         descompte2 = (preuDescomptat - 5000) - ((preuDescomptat - 5000) * 0.1)
                         preuDescomptat = preuDescomptat - descompte2
                 if (servei == 'T' or servei == 't'):
+                    quantitatT += 1
                     preuInicial = numPersones * preuDelServei4
                     if (numPersones > 50):
                         descompte1 = preuInicial - (preuInicial * 0.05)
@@ -79,3 +92,14 @@ if __name__ == '__main__':
 
             comptador +=1
 
+    print(f"Resum de la quantitat segons el tipus"
+        f"\n\t {nomServei1} = {quantitatB}"
+        f"\n\t {nomServei2} = {quantitatP}"
+        f"\n\t {nomServei3} = {quantitatV}"
+        f"\n\t {nomServei4} = {quantitatT}")
+
+    print(f"Resum dels imports segons el tipus"
+          f"\n\t {nomServei1} = {totalB}"
+          f"\n\t {nomServei2} = {totalP}"
+          f"\n\t {nomServei3} = {totalV}"
+          f"\n\t {nomServei4} = {totalT}")
