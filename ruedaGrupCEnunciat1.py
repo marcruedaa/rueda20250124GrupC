@@ -1,4 +1,4 @@
-from xml.sax.saxutils import escape
+
 
 if __name__ == '__main__':
     nomServei1 = "B - Bàsic: Menú senzill i sala"
